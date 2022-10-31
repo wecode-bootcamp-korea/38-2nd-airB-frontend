@@ -1,0 +1,12 @@
+const theme = {
+  black: '#000000',
+  white: '#FFFFFF',
+  lightGrey: '#B0B0B0',
+  middleGrey: '#717171',
+  deepGrey: '#222222',
+  hoverGrey: '#DBDBDB',
+  pink: '#FF09D6',
+  blue: '#4C5AEE',
+};
+
+export default theme;
