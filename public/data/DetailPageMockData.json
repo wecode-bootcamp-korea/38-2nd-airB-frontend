@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Mock data house Title",
+    "description": "Mock data house Description",
+    "price": 99999,
+    "guestMax": 3,
+    "bedroom_count": 2,
+    "hostId": "도영",
+    "url": [
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80",
+      "https://images.unsplash.com/photo-1522050212171-61b01dd24579?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+      "https://images.unsplash.com/photo-1587094313669-faf7668ed8a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+      "https://images.unsplash.com/photo-1599149687740-6c9f9cb8bda8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1204&q=80",
+      "https://images.unsplash.com/photo-1552765063-31cfdea3d1e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+    ]
+  }
+]

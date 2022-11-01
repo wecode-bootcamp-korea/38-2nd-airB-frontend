@@ -9,7 +9,7 @@ function HostStore(props) {
   const [data, setData] = useState([]);
   const [basicScale, setBasicScale] = useState(10);
   const [basicLat, setBasicLat] = useState(37.54376416965958);
-  const [basicLng, setBasicLng] = useState(126.91244013156507);
+  const [basicLng, setBasicLng] = useState(126.91244013156506);
 
   return (
     <HostContext.Provider

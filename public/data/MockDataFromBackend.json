@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": 30,
+      "title": "서핑 친화적인 자연의 인공적 쉼터 ",
+      "price": "100000.00",
+      "description": "저희 숙소는 발코니에서 돼지 동굴의 가장 멋진 전망을 감상할 수 있기 때문에 이 지역에서 독특합니다. 풍부한 바닷바람을 느끼며 휴식을 취할 수 있으며, 카요 차차후알리에서는 교류하고 가리푸나 민족에 대해 배울 수 있습니다. ",
+      "bed": 2,
+      "bedroom": 1,
+      "guestMax": 6,
+      "bathroom": 2,
+      "hostId": 4,
+      "buildingType": "호텔",
+      "hostDesc": "저희집은 복도를 기준으로 현관이 두개로 나누어져 호스트의 공간과 게스트의 공간이 분리되어 있습니다. 차로 마니산까지 5분거리에 위치하고 있어 숙소에서 논과 마니산 뷰를 즐기실 수 있습니다. 10평정도의 아늑한 공간으로 복층 구조의 침실과 거실에 실내자쿠지가 있습니다.",
+      "city": "인천",
+      "theme": "마운틴뷰",
+      "coordinate": {
+        "lat": 37.4494178,
+        "lng": 126.4504179
+      },
+      "imageUrl": [
+        "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80",
+        "https://images.unsplash.com/photo-1522050212171-61b01dd24579?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+        "https://images.unsplash.com/photo-1587094313669-faf7668ed8a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+        "https://images.unsplash.com/photo-1599149687740-6c9f9cb8bda8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1204&q=80",
+        "https://images.unsplash.com/photo-1552765063-31cfdea3d1e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+      ],
+      "reservations": [
+        {
+          "check_in": "2022-11-01",
+          "check_out": "2022-11-02"
+        },
+        {
+          "check_in": "2022-11-14",
+          "check_out": "2022-11-15"
+        },
+        {
+          "check_in": "2022-11-21",
+          "check_out": "2022-11-22"
+        }
+      ],
+      "holidays": [
+        {
+          "check_in": "2022-11-28",
+          "check_out": "2022-11-29"
+        }
+      ]
+    }
+  ]
+}
