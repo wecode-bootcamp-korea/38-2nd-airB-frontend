@@ -1,13 +1,13 @@
 import React from 'react';
-import GlobalNav from '../../components/Nav/GlobalNav/GlobalNav';
-import ListMain from './List/ListMain';
+import Nav from '../../components/Nav/Nav';
 import Filter from '../Filter/Filter';
 import MapBtn from '../Map/MapBtn';
+import ListMain from './List/ListMain';
 
 const Main = () => {
   return (
     <>
-      <GlobalNav />
+      <Nav />
       <Filter />
       <ListMain />
       <MapBtn />

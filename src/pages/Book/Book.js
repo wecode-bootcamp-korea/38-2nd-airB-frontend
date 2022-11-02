@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BookedPlace from './BookedPlace';
 import styled from 'styled-components/macro';
-import Empty from './Empty';
 import theme from '../../styles/theme';
+import BookedPlace from './BookedPlace';
+import Empty from './Empty';
 
 const Book = () => {
   const [bookList, setBookList] = useState(null);
@@ -46,7 +46,7 @@ const S = {
   `,
 
   BookHeaderContainer: styled.div`
-    padding-bottom: 40px;
+    padding-bottom: 30px;
   `,
 
   BookTitle: styled.h2`

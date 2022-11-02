@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { BsGlobe, BsChevronUp, BsXCircle } from 'react-icons/bs';
-import BottomSheet from '../BottomSheet/BottomSheet';
-import variables from '../../styles/variables';
+import styled from 'styled-components';
 import theme from '../../styles/theme';
+import variables from '../../styles/variables';
+import BottomSheet from '../BottomSheet/BottomSheet';
 
 const Footer = () => {
   const [isShowing, setIsShowing] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BsXLg, BsHouse } from 'react-icons/bs';
 import { BiBuildings } from 'react-icons/bi';
+import { BsXLg, BsHouse } from 'react-icons/bs';
 import { FaHotel } from 'react-icons/fa';
 import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import 'swiper/css';

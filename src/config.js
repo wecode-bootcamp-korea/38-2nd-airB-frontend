@@ -6,6 +6,7 @@ export const API = {
   HOST: `${BASE_URL}/`,
   BOOK: `${BASE_URL}/`,
   DETAIL: `${BASE_URL}/`,
+  FILTER: `${BASE_URL}/product/option`,
   MAINFILTER: `${BASE_URL}/`,
   GNBFILTER: `${BASE_URL}/`,
   LNBFILTER: `${BASE_URL}/`,

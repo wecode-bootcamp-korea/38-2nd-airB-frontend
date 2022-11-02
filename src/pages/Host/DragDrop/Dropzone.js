@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
-import HostStore, { HostContext } from '../User';
 import styled from 'styled-components/macro';
 import variables from '../../../styles/variables';
+import HostStore, { HostContext } from '../User';
 
 function DropzoneComponent() {
   const context = useContext(HostContext);
@@ -35,14 +35,12 @@ function DropzoneComponent() {
           alt="여기다 올려주세요"
         />
         <S.MessageBox onClick={onClickMessageBox} />
-        {
-          <S.PhotoInput
-            ref={inputref}
-            type="file"
-            accept="image/*"
-            onChange={onImageChange}
-          />
-        }
+        <S.PhotoInput
+          ref={inputref}
+          type="file"
+          accept="image/*"
+          onChange={onImageChange}
+        />
       </S.PhotoBoxMessage>
     </HostStore>
   );

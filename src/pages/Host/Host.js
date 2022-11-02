@@ -1,18 +1,18 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import HostStore, { HostContext } from './User';
-import HostHouse from './HostStair/HostHouse';
-import HostMain from './HostStair/HostMain';
-import HostMap from './HostStair/HostMap';
-import HostBed from './HostStair/HostBed';
-import HostPicture from './HostStair/HostPicture';
-import HostInfo from './HostStair/HostInfo';
-import HostPrice from './HostStair/HostPrice';
-import HostResult from './HostResult';
 import styled from 'styled-components/macro';
 import variables from '../../styles/variables';
-import HostView from './HostStair/HostView';
 import HostLanding from './HostMessage/HostLanding';
+import HostResult from './HostResult';
+import HostBed from './HostStair/HostBed';
+import HostHouse from './HostStair/HostHouse';
+import HostInfo from './HostStair/HostInfo';
+import HostMain from './HostStair/HostMain';
+import HostMap from './HostStair/HostMap';
+import HostPicture from './HostStair/HostPicture';
+import HostPrice from './HostStair/HostPrice';
+import HostView from './HostStair/HostView';
+import HostStore, { HostContext } from './User';
 
 const Host = () => {
   const [pageCount, setPageCount] = useState(0);
@@ -43,40 +43,28 @@ const Host = () => {
   const message = [
     <HostLanding
       key="HostVideo"
-      video={
-        'https://user-images.githubusercontent.com/110619143/199485007-824ff3d8-f66d-4466-a317-b872a9daa185.mp4'
-      }
+      video="https://user-images.githubusercontent.com/110619143/199485007-824ff3d8-f66d-4466-a317-b872a9daa185.mp4"
     />,
     <HostLanding
       key="Locationmessage"
-      message={'게스트가 머무르게 될 숙소의 종류가 무엇인가요?'}
+      message="게스트가 머무르게 될 숙소의 종류가 무엇인가요?"
     />,
-    <HostLanding
-      key="Viewmessage"
-      message={'멋진 뷰와 지역을 선택해주세요.'}
-    />,
-    <HostLanding
-      key="Mapmessage"
-      message={'숙소의 정확한 위치는 어디인가요?'}
-    />,
+    <HostLanding key="Viewmessage" message="멋진 뷰와 지역을 선택해주세요." />,
+    <HostLanding key="Mapmessage" message="숙소의 정확한 위치는 어디인가요?" />,
     <HostLanding
       key="Housemessage"
-      message={'숙소에서 맞이할 최대 인원수를 알려주세요.'}
+      message="숙소에서 맞이할 최대 인원수를 알려주세요."
     />,
     <HostLanding
       key="PhotoVideo"
-      video={
-        'https://user-images.githubusercontent.com/110619143/199457753-c100958d-ce2f-407e-9cf4-4d04451db054.mp4'
-      }
+      video="https://user-images.githubusercontent.com/110619143/199457753-c100958d-ce2f-407e-9cf4-4d04451db054.mp4"
     />,
-    <HostLanding key="Housemessage" message={'숙소 정보를 입력해주세요.'} />,
+    <HostLanding key="Housemessage" message="숙소 정보를 입력해주세요." />,
     <HostLanding
       key="PriceVideo"
-      video={
-        'https://user-images.githubusercontent.com/110619143/199483561-bc1a8945-5e47-4ed3-86fe-cdae2123dd37.mp4'
-      }
+      video="https://user-images.githubusercontent.com/110619143/199483561-bc1a8945-5e47-4ed3-86fe-cdae2123dd37.mp4"
     />,
-    <HostLanding key="resultmessage" message={'한 번 더 확인해 주세요.'} />,
+    <HostLanding key="resultmessage" message="한 번 더 확인해 주세요." />,
   ];
 
   const goMain = () => {
@@ -98,7 +86,7 @@ const Host = () => {
             <S.HostBar count={pageCount} />
             <S.HostQuestionStartBox>
               {pageCount === 0 ? (
-                <S.HiddenBox></S.HiddenBox>
+                <S.HiddenBox />
               ) : (
                 <S.HostBack onClick={backPage}>뒤로 </S.HostBack>
               )}

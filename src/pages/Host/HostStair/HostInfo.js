@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import HostStore, { HostContext } from '../User';
 import styled from 'styled-components/macro';
 import variables from '../../../styles/variables';
+import HostStore, { HostContext } from '../User';
 
 const HostInfo = () => {
   const titleInput = e => {

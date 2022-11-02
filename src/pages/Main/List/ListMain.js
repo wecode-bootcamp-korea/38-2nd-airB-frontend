@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ListCard from './ListCard';
 import styled from 'styled-components';
+import ListCard from './ListCard';
 
 const ListMain = () => {
   const [houseList, setHouseList] = useState([]);

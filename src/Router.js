@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from './pages/Main/Main';
-import Host from './pages/Host/Host';
-import Detail from './pages/Detail/Detail';
-import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
-import MainLayout from './pages/Main/MainLayout';
-import Filter from './pages/Filter/Filter';
 import Book from './pages/Book/Book';
+import Detail from './pages/Detail/Detail';
+import Filter from './pages/Filter/Filter';
+import Host from './pages/Host/Host';
+import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
+import Main from './pages/Main/Main';
+import MainLayout from './pages/Main/MainLayout';
 
 const Router = () => {
   return (

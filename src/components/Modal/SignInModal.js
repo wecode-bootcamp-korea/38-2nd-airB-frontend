@@ -1,7 +1,7 @@
 import React from 'react';
-import Modal from './Modal';
-import SignIn from '../SignIn/SignIn';
 import theme from '../../styles/theme';
+import SignIn from '../SignIn/SignIn';
+import Modal from './Modal';
 
 const SignInModal = ({ isSignInModalOpen, setIsSignInModalOpen }) => {
   return (
@@ -24,7 +24,7 @@ const modalStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: `${theme.colors.transparentBlack3}`,
+    backgroundColor: `${theme.colors.transparentBlack[3]}`,
     zIndex: `${theme.levels.modalOverlay}`,
   },
   content: {
