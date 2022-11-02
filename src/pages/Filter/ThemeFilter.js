@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import {
   FaUmbrellaBeach,
   FaMountain,
   FaRegSnowflake,
   FaHotel,
 } from 'react-icons/fa';
-import { SiAltiumdesigner } from 'react-icons/si';
 import {
   GiPisaTower,
   GiRiver,
@@ -28,11 +26,13 @@ import {
   GiMoneyStack,
 } from 'react-icons/gi';
 import { GrOverview } from 'react-icons/gr';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel } from 'swiper';
+import { SiAltiumdesigner } from 'react-icons/si';
+import { useSearchParams } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
+import { Navigation, Mousewheel } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ThemeFilter = ({ reverseProps }) => {
   const [filterValue, setFilterValue] = useState();

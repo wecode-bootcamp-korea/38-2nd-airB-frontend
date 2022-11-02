@@ -1,9 +1,9 @@
 /*global kakao */
 import React, { useContext, useEffect, useState } from 'react';
-import { HostContext } from './Mapcontext';
 import { Map } from 'react-kakao-maps-sdk';
-import variables from '../../styles/variables';
 import styled from 'styled-components/macro';
+import variables from '../../styles/variables';
+import { HostContext } from './Mapcontext';
 import Marker from './Marker';
 
 const MainMap = () => {

@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-import HostStore, { HostContext } from '../User';
 import styled from 'styled-components/macro';
 import variables from '../../../styles/variables';
+import HostStore, { HostContext } from '../User';
 
 const HostMap = () => {
   const mapRef = useRef();
@@ -32,7 +32,7 @@ const HostMap = () => {
             이 주소가 정확하나요?
             <S.Dot>⌖</S.Dot>
           </S.LocationButton>
-          <MapMarker position={{ lat, lng }}></MapMarker>
+          <MapMarker position={{ lat, lng }} />
         </Map>
       </S.HostMapBox>
     </HostStore>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { HostContext } from '../User';
 import styled from 'styled-components/macro';
 import variables from '../../../styles/variables';
+import { HostContext } from '../User';
 
 const HostBed = () => {
   const context = useContext(HostContext);

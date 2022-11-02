@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { BsXCircle } from 'react-icons/bs';
+import styled from 'styled-components';
+import theme from '../../styles/theme';
 import variables from '../../styles/variables';
 
 export const APIKEY = process.env.REACT_APP_API_KEY;
@@ -34,8 +35,8 @@ export default SignIn;
 
 const S = {
   SignInTitleBox: styled.div`
-    position: relative;
     ${variables.flex('row', 'center', 'center')};
+    position: relative;
     padding: 20px 30px;
     border-bottom: 1px solid #eee;
   `,
@@ -70,7 +71,7 @@ const S = {
 
     &:hover {
       background-color: #222;
-      color: white;
+      color: ${theme.colors.white};
     }
   `,
 };

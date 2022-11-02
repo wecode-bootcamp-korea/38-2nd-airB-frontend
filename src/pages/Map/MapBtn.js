@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import styled from 'styled-components/macro';
+import variables from '../../styles/variables';
 import MainMap from './MainMap';
 import HostStore from './Mapcontext';
-import variables from '../../styles/variables';
-import styled from 'styled-components/macro';
 
 const MapBtn = () => {
   const [isMapShowing, setMapShowing] = useState(false);

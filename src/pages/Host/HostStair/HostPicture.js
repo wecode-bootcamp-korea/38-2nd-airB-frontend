@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { HostContext } from '../User';
-import DropzoneComponent from '../DragDrop/Dropzone';
 import styled from 'styled-components';
 import variables from '../../../styles/variables';
+import DropzoneComponent from '../DragDrop/Dropzone';
+import { HostContext } from '../User';
 
 const HostPicture = () => {
   const context = useContext(HostContext);

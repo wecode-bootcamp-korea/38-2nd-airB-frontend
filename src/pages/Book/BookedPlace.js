@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { dateToStringForBooking } from 'utils/format';
 import variables from '../../styles/variables';
-import { dateToStringForBooking } from '../../utils/utilFunc';
 
 const BookedPlace = ({ bookList }) => {
   return (
