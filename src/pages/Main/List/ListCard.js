@@ -62,6 +62,7 @@ const S = {
 
   CardSwiperSlide: styled(SwiperSlide)`
     height: 295px;
+    background-color: #eeeeee;
   `,
 
   CardImage: styled.img`

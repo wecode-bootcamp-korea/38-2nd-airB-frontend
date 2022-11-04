@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   FaUmbrellaBeach,
   FaMountain,
   FaRegSnowflake,
   FaHotel,
+  FaJoint,
 } from 'react-icons/fa';
 import { SiAltiumdesigner } from 'react-icons/si';
 import {
@@ -34,11 +35,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
 
-const ThemeFilter = () => {
+const ThemeFilter = ({ reverseProps }) => {
   const [filterValue, setFilterValue] = useState();
 
-  const saveValue = event => {
-    setFilterValue(event.target.value);
+  const saveValue = num => {
+    setFilterValue(num);
+  };
+
+  useEffect(() => {
+    reverseProps(filterValue);
+  });
+
+  const fetchThemeFilter = () => {
+    fetch('url')
+      .then(res => res)
+      .then(data => setFilterTheme(data));
   };
 
   const [filterTheme, setFilterTheme] = useSearchParams();
@@ -56,14 +67,20 @@ const ThemeFilter = () => {
     >
       {REACT_ICONS.map(el => (
         <OuterDiv key={el.id}>
-          <SwiperSlide>
+          <SliderStyle
+            key={el.id}
+            onClick={() => {
+              saveValue(el.id);
+              fetchThemeFilter();
+            }}
+          >
             <IconWrapper>
               <IconSize>
                 <el.icon />
               </IconSize>
               <IconName>{el.name}</IconName>
             </IconWrapper>
-          </SwiperSlide>
+          </SliderStyle>
         </OuterDiv>
       ))}
     </Sippy>
@@ -73,7 +90,11 @@ const ThemeFilter = () => {
 export default ThemeFilter;
 
 const Sippy = styled(Swiper)`
-  z-index: 1;
+  z-index: 0;
+`;
+
+const SliderStyle = styled(SwiperSlide)`
+  background-color: #eeeeee;
 `;
 
 const OuterDiv = styled.div`

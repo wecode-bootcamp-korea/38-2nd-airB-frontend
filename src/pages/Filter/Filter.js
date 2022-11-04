@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsXLg, BsHouse } from 'react-icons/bs';
+import { BiBuildings } from 'react-icons/bi';
+import { FaHotel } from 'react-icons/fa';
 import { useSearchParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,9 +11,69 @@ import LocalFilter from './LocalFilter';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
+import ListMain from '../Main/List/ListMain';
 
 const Filter = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [countbed, setCountbed] = useState(0);
+  const [countbedroom, setCountbedroom] = useState(0);
+  const [countbathroom, setCountbathroom] = useState(0);
+  const [buildingType, setBuildingType] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [valueFilter, setValueFilter] = useState('');
+  const [filterFetcher, setFilterFetcher] = useState([]);
+
+  const BuildTypeCheck = num => {
+    setBuildingType(num);
+  };
+
+  const countBedClick = num => {
+    setCountbed(num);
+  };
+
+  const countBedRoomClick = num => {
+    setCountbedroom(num);
+  };
+
+  const countBathRoomClick = num => {
+    setCountbathroom(num);
+  };
+
+  const countMinPrice = num => {
+    setMinPrice(num.target.value);
+  };
+
+  const countMaxPrice = num => {
+    setMaxPrice(num.target.value);
+  };
+
+  const reverseProps = num => {
+    setValueFilter(num);
+  };
+
+  // const [userInput, setUserInput] = useState({
+  //   themeId: '',
+  //   lowprice: '',
+  //   hightprice: '',
+  //   bed: '',
+  //   bathroom: '',
+  //   bedroom: '',
+  //   APT: '',
+  //   GH: '',
+  //   HT: '',
+  // });
+
+  // console.log(countbed);
+
+  // console.log(userInput);
+
+  // const handleInput = event => {
+  //   setUserInput({
+  //     bed: event.target.value,
+  //     bathroom: event.target.value,
+  //   });
+  // };
 
   const openOnClick = () => {
     setModalOpen(true);
@@ -21,12 +83,81 @@ const Filter = () => {
     setModalOpen(false);
   };
 
-  const [filterTheme, setFilterTheme] = useSearchParams();
+  const BASE_URL = 'http://localhost:127.0.0.1:8000/product/option';
+
+  const formData = {
+    themeId: valueFilter,
+    lowprice: minPrice,
+    highprice: maxPrice,
+    bed: countbed,
+    bathroom: countbathroom,
+    bedroom: countbedroom,
+    type: buildingType,
+  };
+
+  const formData2 = {
+    themeId: valueFilter,
+    lowprice: '',
+    highprice: '',
+    bed: '',
+    bathroom: '',
+    bedroom: '',
+    type: '',
+  };
+
+  const typecheckfunction = () => {
+    if (buildingType === 1) {
+      return 'APT : 1';
+    } else if (buildingType === 2) {
+      return 'GH : 2';
+    } else if (buildingType === 3) {
+      return 'HT : 3';
+    }
+  };
+
+  const handlePlaceFetcher = () => {
+    fetch({ url })
+      .then(res => res.json())
+      .then(res => setFilterFetcher(res));
+  };
+
+  const handleResetFetcher = () => {
+    fetch({ resetUrl })
+      .then(res => res.json())
+      .then(res => setFilterFetcher(res));
+  };
+
+  console.log(formData);
+
+  const queryString = Object.entries(formData).reduce(
+    (acc, [key, value]) => `${acc}${key}=${value}&`,
+    ''
+  );
+
+  const resetString = Object.entries(formData2).reduce(
+    (acc, [key, value]) => `${acc}${key}=${value}&`,
+    ''
+  );
+
+  const resetUrl = BASE_URL + '?' + resetString;
+
+  const url = BASE_URL + '?' + queryString;
+
+  console.log(url);
+
+  const numberMapping = Array(8)
+    .fill()
+    .map((_, i) => i + 1);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const setSortParams = () => {
     searchParams.set('sort', 'clear');
+    setSearchParams(searchParams);
+  };
+
+  const setSorParams = () => {
+    searchParams.set('bed', 'number');
     setSearchParams(searchParams);
   };
 
@@ -37,7 +168,7 @@ const Filter = () => {
 
   return (
     <S.ThemeFilterOutline>
-      <ThemeFilter />
+      <ThemeFilter reverseProps={reverseProps} />
       <S.LocalFilterWrapper onClick={openOnClick}>
         <LocalFilter />
       </S.LocalFilterWrapper>
@@ -58,7 +189,11 @@ const Filter = () => {
                 <S.PriceMinMax>최저 요금</S.PriceMinMax>
                 <S.PriceTag>
                   <S.WonSymbol>₩</S.WonSymbol>
-                  <S.PriceFilter type="number" />
+                  <S.PriceFilter
+                    type="number"
+                    inputmode="numeric"
+                    onChange={num => countMinPrice(num)}
+                  />
                 </S.PriceTag>
               </S.PriceOutline>
               <p> - </p>
@@ -66,7 +201,11 @@ const Filter = () => {
                 <S.PriceMinMax>최고 요금</S.PriceMinMax>
                 <S.PriceTag>
                   <S.WonSymbol>₩</S.WonSymbol>
-                  <S.PriceFilter type="number" />
+                  <S.PriceFilter
+                    type="number"
+                    inputmode="numeric"
+                    onChange={num => countMaxPrice(num)}
+                  />
                 </S.PriceTag>
               </S.PriceOutline>
             </S.AllPrice>
@@ -75,7 +214,7 @@ const Filter = () => {
             <S.SubTitle>숙소 유형</S.SubTitle>
             <form>
               <S.CheckBoxWrapper>
-                <S.CheckBox type="checkbox" />
+                <S.CheckBox type="checkbox" onClick={setSorParams} />
                 <div>
                   <S.RoomType>집전체</S.RoomType>
                   <S.RoomDescription>
@@ -84,7 +223,7 @@ const Filter = () => {
                 </div>
               </S.CheckBoxWrapper>
               <S.CheckBoxWrapper>
-                <S.CheckBox type="checkbox" />
+                <S.CheckBox type="checkbox" onClick={setSortParams} />
                 <div>
                   <S.RoomType>개인실</S.RoomType>
                   <S.RoomDescription>
@@ -97,7 +236,7 @@ const Filter = () => {
                 <div>
                   <S.RoomType>다인실</S.RoomType>
                   <S.RoomDescription>
-                    다른 사람들과 함께 사용하는 다인실 및 공용 공간{' '}
+                    다른 사람들과 함께 사용하는 다인실 및 공용 공간
                   </S.RoomDescription>
                 </div>
               </S.CheckBoxWrapper>
@@ -107,14 +246,14 @@ const Filter = () => {
             <S.SubTitle>침실과 침대</S.SubTitle>
             <S.BedAndBath>침실</S.BedAndBath>
             <S.ButtonCluster>
-              {Array(8)
-                .fill()
-                .map((_, i) => i + 1)
-                .map(quantity => (
-                  <S.NumberButton key="bedroom" value={quantity}>
-                    {quantity}
-                  </S.NumberButton>
-                ))}
+              {numberMapping.map(num => (
+                <S.NumberButton
+                  key={num}
+                  onClick={() => countBedRoomClick(num)}
+                >
+                  {num}
+                </S.NumberButton>
+              ))}
             </S.ButtonCluster>
             <S.BedAndBath>침대</S.BedAndBath>
             <S.ButtonCluster>
@@ -122,7 +261,11 @@ const Filter = () => {
                 .fill()
                 .map((_, i) => i + 1)
                 .map(quantity => (
-                  <S.NumberButton key="bed" value={quantity}>
+                  <S.NumberButton
+                    key={quantity}
+                    value={quantity}
+                    onClick={() => countBedClick(quantity)}
+                  >
                     {quantity}
                   </S.NumberButton>
                 ))}
@@ -133,35 +276,44 @@ const Filter = () => {
                 .fill()
                 .map((_, i) => i + 1)
                 .map(quantity => (
-                  <S.NumberButton key="bathroom" value={quantity}>
+                  <S.NumberButton
+                    key={quantity}
+                    value={quantity}
+                    onClick={() => countBathRoomClick(quantity)}
+                  >
                     {quantity}
                   </S.NumberButton>
                 ))}
             </S.ButtonCluster>
           </S.CommonWrapper>
-          <div>
-            <S.CommonWrapper>
-              <S.SubTitle>건물 유형</S.SubTitle>
-              <S.HouseTypeButton>
+          <S.CommonWrapper>
+            <S.SubTitle>건물 유형</S.SubTitle>
+            {HOUSETYPE.map(el => (
+              <S.HouseTypeButton
+                key={el.id}
+                onClick={() => BuildTypeCheck(el.id)}
+              >
                 <S.TypeInnerContentWrapper>
                   <S.TypeInnerIcon>
-                    <BsHouse />
+                    <el.icon />
                   </S.TypeInnerIcon>
-                  <S.TypeInnerText>단독 또는 다세대 주택</S.TypeInnerText>
+                  <S.TypeInnerText>{el.name}</S.TypeInnerText>
                 </S.TypeInnerContentWrapper>
               </S.HouseTypeButton>
-            </S.CommonWrapper>
-            <S.CommonWrapper>
-              <S.SubTitle>편의시설</S.SubTitle>
-            </S.CommonWrapper>
-            <S.CommonWrapper>
-              <S.SubTitle>예약옵션</S.SubTitle>
-            </S.CommonWrapper>
-          </div>
+            ))}
+          </S.CommonWrapper>
+          <S.CommonWrapper>
+            <S.SubTitle>편의시설</S.SubTitle>
+          </S.CommonWrapper>
+          <S.CommonWrapper>
+            <S.SubTitle>예약옵션</S.SubTitle>
+          </S.CommonWrapper>
         </S.ModalInnerText>
         <S.LowerComponentWrapper>
-          <S.RemoveAll>전체 해제</S.RemoveAll>
-          <S.CountAccomodation>숙소 개 표시</S.CountAccomodation>
+          <S.RemoveAll onClick={handleResetFetcher}>전체 해제</S.RemoveAll>
+          <S.CountAccomodation onClick={handlePlaceFetcher}>
+            숙소 개 표시
+          </S.CountAccomodation>
         </S.LowerComponentWrapper>
       </S.ModalWrapper>
     </S.ThemeFilterOutline>
@@ -213,6 +365,7 @@ const S = {
     height: 80%;
     border: 1px solid gray;
     overflow: hidden;
+    opacity: 100%;
   `,
 
   UpperComponentWrapper: styled.div`
@@ -352,17 +505,6 @@ const S = {
     align-items: center;
   `,
 
-  IDCButton: styled.button`
-    width: 120px;
-    height: 40px;
-    border-radius: 30px;
-    font-size: 14px;
-    margin-right: 10px;
-    background-color: white;
-    outline: none;
-    border: 0.5px solid #b0b0b0;
-  `,
-
   NumberButton: styled.button`
     width: 60px;
     height: 40px;
@@ -374,12 +516,19 @@ const S = {
     border: 0.5px solid #b0b0b0;
   `,
 
+  HouseTypeWrapper: styled.div`
+    display: flex;
+    margin-left: 10px;
+  `,
+
   HouseTypeButton: styled.button`
     width: 162px;
     height: 128px;
     border-radius: 10px;
-    border: none;
+    border: 1px solid #ebebeb;
     outline: none;
+    background-color: white;
+    margin-right: 20px;
   `,
 
   TypeInnerContentWrapper: styled.div`
@@ -397,3 +546,9 @@ const S = {
     font-size: 16px;
   `,
 };
+
+const HOUSETYPE = [
+  { id: 1, name: '아파트', icon: BiBuildings },
+  { id: 2, name: '게스트용 별채', icon: BsHouse },
+  { id: 3, name: '호텔', icon: FaHotel },
+];

@@ -30,9 +30,9 @@ const FilterButton = styled.button`
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  border: 1px solid #dddddd;
+  border: 1px solid #717171;
   outline: none;
-  background-color: white;
+  background-color: #f7f7f7;
   padding: 0;
   border-radius: 12px;
   width: 78px;
