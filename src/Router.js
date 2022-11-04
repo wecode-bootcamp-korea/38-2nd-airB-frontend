@@ -17,6 +17,8 @@ const Router = () => {
           <Route path="/booking/:userId" element={<Book />} />
         </Route>
         <Route path="/host" element={<Host />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/kakao/login" element={<KakaoLogin />} />
       </Routes>
     </BrowserRouter>
   );
