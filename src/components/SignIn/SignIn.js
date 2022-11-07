@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsXCircle } from 'react-icons/bs';
 import variables from '../../styles/variables';
+import theme from '../../styles/theme';
 
 export const APIKEY = process.env.REACT_APP_API_KEY;
 export const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${APIKEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
-const SignIn = ({ setIsModalOpen }) => {
+const SignIn = () => {
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
@@ -15,7 +16,7 @@ const SignIn = ({ setIsModalOpen }) => {
   return (
     <div>
       <S.SignInTitleBox>
-        <S.SignInCloseBtn onClick={() => setIsModalOpen(prev => !prev)}>
+        <S.SignInCloseBtn>
           <BsXCircle />
         </S.SignInCloseBtn>
         <h1>카카오톡으로 회원가입 또는 로그인</h1>
@@ -70,7 +71,7 @@ const S = {
 
     &:hover {
       background-color: #222;
-      color: white;
+      color: ${theme.colors.white};
     }
   `,
 };

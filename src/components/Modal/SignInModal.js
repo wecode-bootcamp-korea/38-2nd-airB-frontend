@@ -1,8 +1,8 @@
 import React from 'react';
-import Modal from './Modal';
 import SignIn from '../SignIn/SignIn';
+import Modal from './Modal';
 
-const SignInModal = ({ isSignInModalOpen, setIsSignInModalOpen }) => {
+const SignInModal = ({ isModalOpen, setIsModalOpen, onClose }) => {
   const modalStyle = {
     overlay: {
       position: 'fixed',
@@ -11,7 +11,6 @@ const SignInModal = ({ isSignInModalOpen, setIsSignInModalOpen }) => {
       right: 0,
       bottom: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
-      zIndex: 999,
     },
     content: {
       position: 'absolute',
@@ -33,11 +32,11 @@ const SignInModal = ({ isSignInModalOpen, setIsSignInModalOpen }) => {
 
   return (
     <Modal
-      isModalOpen={isSignInModalOpen}
-      setIsModalOpen={setIsSignInModalOpen}
+      isModalOpen={isModalOpen}
+      setIsModalOpen={setIsModalOpen}
       modalStyle={modalStyle}
     >
-      <SignIn setIsModalOpen={setIsSignInModalOpen} />
+      <SignIn />
     </Modal>
   );
 };

@@ -8,7 +8,11 @@ const theme = {
     hoverGrey: '#DBDBDB',
     pink: '#FF09D6',
     blue: '#4C5AEE',
+    skyblue: '#4C83C2',
     grayScale: ['#eee', '#ddd', '#555', '#888'],
+    transparentBlack0: 'rgba(0, 0, 0, 0.05)',
+    transparentBlack1: 'rgba(0, 0, 0, 0.1)',
+    transparentBlack2: 'rgba(0, 0, 0, 0.2)',
   },
 
   levels: {
@@ -37,6 +41,18 @@ const theme = {
     base: '24px',
     md: '28px',
     lg: '34px',
+  },
+
+  overlay: {
+    search: 'rgba(0, 0, 0, 0.1)',
+  },
+
+  boxShadow: {
+    mouseOver: `0 5px 10px rgba(0, 0, 0, 0.2)`,
+    dropdown: `0 4px 6px rgba(0, 0, 0, 0.18)`,
+    popup: `0 4px 20px rgba(63, 65, 80, 0.3)`,
+    searchBar: `2px 2px 3px rgba(0, 0, 0, 0.2)`,
+    popupReversed: `0 -4px 20px rgba(63, 65, 80, 0.3)`,
   },
 };
 

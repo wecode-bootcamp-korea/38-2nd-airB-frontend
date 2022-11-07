@@ -25,6 +25,9 @@ const KakaoLogin = () => {
           localStorage.setItem('token', data.access_token);
           navigate('/');
         } else {
+          // TODO: 나중에 에러 핸들링 해야함
+          // XXX: 좋지않은 방식으로 개발했음 리팩토링 필요
+          // HACK: console을 탈취하는 방식으로 구현함. 수정 필요
           navigate('/');
           alert();
         }

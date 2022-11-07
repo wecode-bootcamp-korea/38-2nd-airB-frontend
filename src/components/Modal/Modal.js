@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
+import styled from 'styled-components';
 
 const Modal = ({ isModalOpen, setIsModalOpen, children, modalStyle }) => {
   return (
@@ -10,10 +11,14 @@ const Modal = ({ isModalOpen, setIsModalOpen, children, modalStyle }) => {
         ariaHideApp={false}
         onRequestClose={() => setIsModalOpen(false)}
       >
-        <div>{children}</div>
+        <S.ModalWrapper>{children}</S.ModalWrapper>
       </ReactModal>
     </div>
   );
 };
 
 export default Modal;
+
+const S = {
+  ModalWrapper: styled.div``,
+};
