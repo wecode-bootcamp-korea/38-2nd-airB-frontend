@@ -1,0 +1,135 @@
+[
+  {
+    "title": "위코드",
+    "latitude": 37.506298274965395,
+    "longitude": 127.05359201671558,
+    "description": "난 위코드.",
+    "price": 24000,
+    "buildingTypeId": 2,
+    "themeId": 1,
+    "image": [
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2865&q=80"
+    ]
+  },
+  {
+    "title": "용산역",
+    "latitude": 37.529465455933526,
+    "longitude": 126.9647247907041,
+    "description": "난 용산역.",
+    "price": 6500,
+    "buildingTypeId": 3,
+    "themeId": 1,
+    "image": [
+      "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+    ]
+  },
+  {
+    "title": "청량리역",
+    "latitude": 37.57979965011701,
+    "longitude": 127.04814830044249,
+    "description": "난 청량리역.",
+    "price": 27000,
+    "buildingTypeId": 1,
+    "themeId": 1,
+
+    "image": [
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+    ]
+  },
+  {
+    "title": "롯데타워",
+    "latitude": 37.50856774154176,
+    "longitude": 127.10020884198003,
+    "description": "난 롯데타워이다.",
+    "price": 20000,
+    "themeId": 1,
+    "buildingTypeId": 1,
+    "image": [
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+    ]
+  },
+  {
+    "title": "인천국제공항",
+    "latitude": 37.46080645276192,
+    "longitude": 126.44703410455519,
+    "description": "난 인천국제공항이다.",
+    "price": 20000,
+    "themeId": 1,
+    "buildingTypeId": 2,
+    "image": [
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+    ]
+  },
+  {
+    "title": "고양시청",
+    "latitude": 37.65816369832773,
+    "longitude": 126.83204634620856,
+    "description": "난 고양시청이다.",
+    "price": 60000,
+    "themeId": 3,
+    "buildingTypeId": 1,
+    "image": [
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+    ]
+  },
+  {
+    "title": "서울대학교",
+    "latitude": 37.46064935610086,
+    "longitude": 126.95331847387148,
+    "description": "난 서울대학교이다.",
+    "price": 30000,
+    "themeId": 1,
+    "buildingTypeId": 2,
+    "image": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+    ]
+  },
+  {
+    "title": "하남스타필드",
+    "latitude": 37.545123387450545,
+    "longitude": 127.2235995665934,
+    "description": "난 하남스타필드.",
+    "price": 2000,
+    "themeId": 2,
+    "buildingTypeId": 1,
+    "image": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+    ]
+  },
+  {
+    "title": "북한산",
+    "latitude": 37.65819112126296,
+    "longitude": 126.97803681389205,
+    "description": "난 북한산.",
+    "price": 80000,
+    "themeId": 1,
+    "buildingTypeId": 2,
+    "image": [
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+    ]
+  },
+  {
+    "title": "고양코스트코",
+    "latitude": 37.64050663652834,
+    "longitude": 126.78857809596883,
+    "description": "난 고양코스트코.",
+    "price": 30000,
+    "themeId": 2,
+    "buildingTypeId": 3,
+    "image": [
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+    ]
+  },
+  {
+    "title": "수서역",
+    "latitude": 37.48499340295298,
+    "longitude": 127.10483570497331,
+    "description": "난 수서역.",
+    "price": 50000,
+    "themeId": 3,
+    "buildingTypeId": 3,
+    "image": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+    ]
+  }
+]
