@@ -3,7 +3,6 @@ import Main from './pages/Main/Main';
 import Host from './pages/Host/Host';
 import Detail from './pages/Detail/Detail';
 import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
-import Filter from './pages/Filter/Filter';
 
 const Router = () => {
   return (
