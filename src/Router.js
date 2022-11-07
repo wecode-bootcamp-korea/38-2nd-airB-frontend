@@ -4,6 +4,7 @@ import Host from './pages/Host/Host';
 import Detail from './pages/Detail/Detail';
 import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
 import MainLayout from './pages/Main/MainLayout';
+import Filter from './pages/Filter/Filter';
 import Book from './pages/Book/Book';
 
 const Router = () => {
