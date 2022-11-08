@@ -82,8 +82,6 @@ const FilterModal = ({ valueFilterMain }) => {
     type: buildingType,
   };
 
-  console.log(formData);
-
   const formData2 = {
     themeId: valueFilterMain,
     lowprice: '',
@@ -229,7 +227,6 @@ const FilterModal = ({ valueFilterMain }) => {
                       primary={countbedroom === `${num}`}
                       key={num}
                       onClick={() => {
-                        console.log(countbedroom);
                         countBedRoomClick(num);
                       }}
                       name="bedroom"
