@@ -58,8 +58,6 @@ const ThemeFilter = ({ reverseProps }) => {
       spaceBetween={0}
       slidesPerView={8}
       slidesPerGroup={8}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={swiper => console.log(swiper)}
       navigation={true}
       modules={[Navigation, Mousewheel]}
       mousewheel={true}

@@ -16,10 +16,9 @@ const Router = () => {
           <Route path="/kakao/login" element={<KakaoLogin />} />
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/booking/:userId" element={<Book />} />
+          <Route path="/filter" element={<Filter />} />
         </Route>
         <Route path="/host" element={<Host />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/kakao/login" element={<KakaoLogin />} />
       </Routes>
     </BrowserRouter>
   );
