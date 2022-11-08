@@ -1,7 +1,8 @@
 import React from 'react';
 import GlobalNav from '../../components/Nav/GlobalNav/GlobalNav';
-import Filter from '../Filter/Filter';
 import ListMain from './List/ListMain';
+import Filter from '../Filter/Filter';
+import MapBtn from '../Map/MapBtn';
 
 const Main = () => {
   return (
@@ -9,6 +10,7 @@ const Main = () => {
       <GlobalNav />
       <Filter />
       <ListMain />
+      <MapBtn />
     </>
   );
 };

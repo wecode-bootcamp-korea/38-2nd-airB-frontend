@@ -40,7 +40,6 @@ const HostResult = () => {
     hostDescription: hostDescription,
     image: imgs,
   };
-
   const goMainPage = () => {
     const isAllFilledForm = Object.values(context).every(
       value => value.length !== 0
@@ -81,7 +80,6 @@ const HostResult = () => {
   const hostDescriptionInput = e => {
     sethostDescription(e.target.value);
   };
-
   return (
     <S.Background>
       <S.BackgroundImg src="https://images.unsplash.com/photo-1517495306984-f84210f9daa8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" />
