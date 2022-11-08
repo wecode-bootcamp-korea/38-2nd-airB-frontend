@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './styles.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import styled from 'styled-components';
 
 const ListCard = ({ data }) => {
   const priceToString = price => {
@@ -14,34 +15,45 @@ const ListCard = ({ data }) => {
   };
 
   return (
-    <S.WholeWrapper>
-      <S.CardWrapper>
-        <S.CardImageCarousel
-          cssMode={true}
-          navigation={true}
-          pagination={true}
-          mousewheel={true}
-          keyboard={true}
-          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-          className="mySwiper"
-        >
-          {data?.imageUrl?.map((el, index) => (
-            <S.CardSwiperSlide key={index}>
-              <S.CardImage src={el} />
-            </S.CardSwiperSlide>
-          ))}
-        </S.CardImageCarousel>
-        <S.CardTitle>{data?.title}</S.CardTitle>
-        <S.CardDescription>{data?.name}</S.CardDescription>
-        <S.CardPrice>₩{priceToString(Math.round(data?.price))}/박</S.CardPrice>
-      </S.CardWrapper>
-    </S.WholeWrapper>
+    <S.Linker to={`/detail/:${data.id}`}>
+      <S.WholeWrapper>
+        <S.CardWrapper>
+          <S.CardImageCarousel
+            cssMode={true}
+            navigation={true}
+            pagination={true}
+            mousewheel={true}
+            keyboard={true}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            className="mySwiper"
+          >
+            {data?.image?.map((el, index) => (
+              <S.CardSwiperSlide key={index}>
+                <S.CardImage src={el} />
+              </S.CardSwiperSlide>
+            ))}
+          </S.CardImageCarousel>
+          <S.CardTitle>{data?.title}</S.CardTitle>
+          <S.CardDescription>{data?.city}</S.CardDescription>
+          <S.CardPrice>
+            ₩{priceToString(Math.round(data?.price))}/박
+          </S.CardPrice>
+        </S.CardWrapper>
+      </S.WholeWrapper>
+    </S.Linker>
   );
 };
 
 export default ListCard;
 
 const S = {
+  Linker: styled(Link)`
+    text-decoration: none;
+    width: 316px;
+    height: 400px;
+    color: black;
+  `,
+
   WholeWrapper: styled.div`
     width: 316px;
     height: 400px;

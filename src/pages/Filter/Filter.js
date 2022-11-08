@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
-import ThemeFilter from './ThemeFilter';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
+import { ListContext } from '../Main/ListText';
 import FilterModal from './FilterModal';
+import ThemeFilter from './ThemeFilter';
 
 const Filter = () => {
   const [modal, setModal] = useState(false);
   const [valueFilterMain, setValueFilterMain] = useState('');
   const [valueTheme, setValueTheme] = useState('');
+  const context = useContext(ListContext);
+  const { setFilterValue, setFilterTheme, filterTheme, url } = context;
 
   const reverseProps = num => {
     setValueFilterMain(num);
@@ -25,7 +28,7 @@ const Filter = () => {
 
   return (
     <S.ThemeFilterOutline>
-      <ThemeFilter reverseProps={reverseProps} onClick={saveValue} />
+      <ThemeFilter onClick={saveValue} />
       <S.LocalFilterWrapper>
         <FilterModal isOpen={toggleModal} valueFilterMain={valueFilterMain} />
       </S.LocalFilterWrapper>

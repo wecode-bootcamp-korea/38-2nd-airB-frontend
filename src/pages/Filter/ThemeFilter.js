@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   FaUmbrellaBeach,
   FaMountain,
@@ -33,25 +33,23 @@ import 'swiper/css/navigation';
 import styled from 'styled-components';
 import { Navigation, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { ListContext } from '../Main/ListText';
 
-const ThemeFilter = ({ reverseProps }) => {
-  const [filterValue, setFilterValue] = useState();
+const ThemeFilter = () => {
+  const context = useContext(ListContext);
+  const {
+    filterValue,
+    setFilterValue,
+    setFilterTheme,
+    filterTheme,
+    url,
+    fetchThemeFilter,
+    handlePlaceFetcher,
+  } = context;
 
   const saveValue = num => {
     setFilterValue(num);
   };
-
-  useEffect(() => {
-    reverseProps(filterValue);
-  });
-
-  const fetchThemeFilter = () => {
-    fetch('url')
-      .then(res => res)
-      .then(data => setFilterTheme(data));
-  };
-
-  const [filterTheme, setFilterTheme] = useSearchParams();
 
   return (
     <Sippy
@@ -68,7 +66,7 @@ const ThemeFilter = ({ reverseProps }) => {
             key={icon.id}
             onClick={() => {
               saveValue(icon.id);
-              fetchThemeFilter();
+              handlePlaceFetcher();
             }}
           >
             <IconWrapper>

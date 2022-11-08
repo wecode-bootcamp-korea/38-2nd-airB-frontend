@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { BiBuildings } from 'react-icons/bi';
 import { BsXLg, BsHouse } from 'react-icons/bs';
 import { FaHotel } from 'react-icons/fa';
@@ -6,34 +6,61 @@ import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
+import { ListContext } from '../Main/AmenityFilterContext';
 
 const FilterModal = ({ valueFilterMain }) => {
+  const context = useContext(ListContext);
+  const {
+    countbed,
+    setCountbed,
+    countbedroom,
+    setCountbedroom,
+    countbathroom,
+    setCountbathroom,
+    buildingType,
+    setBuildingType,
+    minPrice,
+    setMinPrice,
+    setMaxPrice,
+    BASE_URL,
+    setFilterFetcher,
+    handlePlaceFetcher,
+  } = context;
+
+  const resetData = {
+    themeId: '',
+    lowprice: '',
+    highprice: '',
+    bed: '',
+    bathroom: '',
+    bedroom: '',
+    type: '',
+  };
+
+  const accommodationMap = {
+    1: 'apartmentType',
+    2: 'guesthouseType',
+    3: 'hotelType',
+  };
+
   const [modal, setModal] = useState(false);
+  const [active, setActive] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  const [countbed, setCountbed] = useState(0);
-  const [countbedroom, setCountbedroom] = useState(0);
-  const [countbathroom, setCountbathroom] = useState(0);
-  const [buildingType, setBuildingType] = useState('');
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [filterFetcher, setFilterFetcher] = useState([]);
-  const [buttonToggle, setButtonToggle] = useState(false);
-  const [color, setColor] = useState('white');
-  const onClick = () => {
-    color === 'white' ? setColor('black') : setColor('white');
+  const handleResetFetcher = () => {
+    fetch(resetUrl)
+      .then(res => res.json())
+      .then(res => setFilterFetcher(res));
   };
+  const resetString = Object.entries(resetData).reduce(
+    (acc, [key, value]) => `${acc}${key}=${value}&`,
+    ''
+  );
 
-  const onChange = e => {
-    setMinPrice(e.target.value);
-  };
-
-  const BuildTypeCheck = num => {
-    setBuildingType(num);
-  };
+  const resetUrl = BASE_URL + '?' + resetString;
 
   const countBedClick = num => {
     setCountbed(num);
@@ -55,81 +82,14 @@ const FilterModal = ({ valueFilterMain }) => {
     setMaxPrice(num.target.value);
   };
 
-  const toggleActive = prev => {
-    setButtonToggle(prev => !prev);
+  const onClickOption = option => e => {
+    setBuildingType({
+      ...buildingType,
+      [accommodationMap[option]]: buildingType[accommodationMap[option]]
+        ? ''
+        : option,
+    });
   };
-
-  const NumberButton = styled.button`
-    width: 60px;
-    height: 40px;
-    border-radius: 30px;
-    font-size: 14px;
-    margin-right: 10px;
-    background-color: ${color};
-    outline: none;
-    border: 0.5px solid #b0b0b0;
-  `;
-
-  const BASE_URL = 'http://10.58.52.94:8000/product/option';
-
-  const formData = {
-    themeId: valueFilterMain,
-    lowprice: minPrice,
-    highprice: maxPrice,
-    bed: countbed,
-    bathroom: countbathroom,
-    bedroom: countbedroom,
-    type: buildingType,
-  };
-
-  const formData2 = {
-    themeId: valueFilterMain,
-    lowprice: '',
-    highprice: '',
-    bed: '',
-    bathroom: '',
-    bedroom: '',
-    type: '',
-  };
-
-  const typecheckfunction = () => {
-    if (buildingType === 1) {
-      return 'APT : 1';
-    } else if (buildingType === 2) {
-      return 'GH : 2';
-    } else if (buildingType === 3) {
-      return 'HT : 3';
-    }
-  };
-
-  const handlePlaceFetcher = () => {
-    fetch({ url })
-      .then(res => res.json())
-      .then(res => setFilterFetcher(res));
-  };
-
-  const handleResetFetcher = () => {
-    fetch({ resetUrl })
-      .then(res => res.json())
-      .then(res => setFilterFetcher(res));
-  };
-
-  const queryString = Object.entries(formData)
-    .map(([key, value]) => `${key}=${value}`)
-    .join('&');
-
-  const resetString = Object.entries(formData2).reduce(
-    (acc, [key, value]) => `${acc}${key}=${value}&`,
-    ''
-  );
-
-  const resetUrl = BASE_URL + '?' + resetString;
-
-  const url = BASE_URL + '?' + queryString;
-
-  const numberMapping = Array(8)
-    .fill()
-    .map((_, i) => i + 1);
 
   return (
     <div>
@@ -141,7 +101,6 @@ const FilterModal = ({ valueFilterMain }) => {
           </S.InnerText>
         </S.FilterButton>
       </S.LocalFilterWrapper>
-
       {modal && (
         <S.ModalWrapper>
           <S.Modaloverlay onClick={toggleModal} />
@@ -224,7 +183,7 @@ const FilterModal = ({ valueFilterMain }) => {
                 <S.ButtonCluster>
                   {numberMapping.map(num => (
                     <S.NumberButton
-                      primary={countbedroom === `${num}`}
+                      primary={countbedroom === num}
                       key={num}
                       onClick={() => {
                         countBedRoomClick(num);
@@ -241,18 +200,16 @@ const FilterModal = ({ valueFilterMain }) => {
                     .fill()
                     .map((_, i) => i + 1)
                     .map(quantity => (
-                      <NumberButton
-                        white
+                      <S.NumberButton
+                        primary={countbed === quantity}
                         key={quantity}
-                        value={quantity}
                         onClick={() => {
                           countBedClick(quantity);
-                          toggleActive();
                         }}
                         name="bed"
                       >
                         {quantity}
-                      </NumberButton>
+                      </S.NumberButton>
                     ))}
                 </S.ButtonCluster>
                 <S.BedAndBath>욕실</S.BedAndBath>
@@ -262,8 +219,8 @@ const FilterModal = ({ valueFilterMain }) => {
                     .map((_, i) => i + 1)
                     .map(quantity => (
                       <S.NumberButton
+                        primary={countbathroom === quantity}
                         key={quantity}
-                        value={quantity}
                         onClick={() => countBathRoomClick(quantity)}
                         name="bathroom"
                       >
@@ -276,8 +233,13 @@ const FilterModal = ({ valueFilterMain }) => {
                 <S.SubTitle>건물 유형</S.SubTitle>
                 {HOUSETYPE.map(el => (
                   <S.HouseTypeButton
+                    primary={false}
                     key={el.id}
-                    onClick={() => BuildTypeCheck(el.id)}
+                    active={active}
+                    onClick={() => {
+                      onClickOption(el.id);
+                      setActive(!active);
+                    }}
                     name="housetype"
                     value={el.id}
                   >
@@ -298,11 +260,23 @@ const FilterModal = ({ valueFilterMain }) => {
               </S.CommonWrapper>
             </S.ModalInnerText>
             <S.LowerComponentWrapper>
-              <S.RemoveAll onClick={handleResetFetcher}>전체 해제</S.RemoveAll>
-              <S.CountAccomodation onClick={handlePlaceFetcher}>
+              <S.RemoveAll
+                onClick={() => {
+                  handleResetFetcher();
+                  toggleModal();
+                }}
+              >
+                전체 해제
+              </S.RemoveAll>
+              <S.CountAccomodation
+                onClick={() => {
+                  handlePlaceFetcher();
+                  toggleModal();
+                }}
+              >
                 숙소 개 표시
               </S.CountAccomodation>
-            </S.LowerComponentWrapper>{' '}
+            </S.LowerComponentWrapper>
           </S.ModalContent>
         </S.ModalWrapper>
       )}
@@ -311,6 +285,10 @@ const FilterModal = ({ valueFilterMain }) => {
 };
 
 export default FilterModal;
+
+const numberMapping = Array(8)
+  .fill()
+  .map((_, i) => i + 1);
 
 const S = {
   LocalFilterWrapper: styled.div`
@@ -551,7 +529,8 @@ const S = {
     border-radius: 30px;
     font-size: 14px;
     margin-right: 10px;
-    background-color: ${props => (props.white ? 'black' : 'white')};
+    background-color: ${({ primary }) => (primary ? 'black' : 'white')};
+    color: ${({ primary }) => (primary ? 'white' : 'black')};
     outline: none;
     border: 0.5px solid #b0b0b0;
   `,
