@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import { MainContext } from '../MainText';
+import { ListContext } from '../AmenityFilterContext';
 import ListCard from './ListCard';
 import Skeleton from './Skeleton';
 
 const ListMain = () => {
-  const [houseList, setHouseList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const context = useContext(ListContext);
+  const { houseList, setHouseList, filterFetcher, url } = context;
 
   useEffect(() => {
-    setLoading(true);
-    fetch('./data/ListMock.json')
+    fetch(url)
       .then(data => data.json())
       .then(data => {
         setHouseList(data.data);
@@ -26,11 +26,17 @@ const ListMain = () => {
     );
   return (
     <S.CardWrapper>
-      {houseList.map(data => (
-        <S.CardStandard>
-          <ListCard key={data.id} data={data} />
-        </S.CardStandard>
-      ))}
+      {filterFetcher !== null
+        ? filterFetcher.data?.map(data => (
+            <S.CardStandard>
+              <ListCard key={data.id} data={data} />
+            </S.CardStandard>
+          ))
+        : houseList?.map(data => (
+            <S.CardStandard>
+              <ListCard key={data.id} data={data} />
+            </S.CardStandard>
+          ))}
     </S.CardWrapper>
   );
 };
