@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import variables from '../../styles/variables';
 import { HostContext } from './User';
 
 const HostResult = () => {
   const [hostDescription, sethostDescription] = useState('');
-  const location = useNavigate();
   const context = useContext(HostContext);
+
   const {
     where,
     lat,
@@ -24,7 +23,6 @@ const HostResult = () => {
     imgs,
   } = context;
   const result = {
-    userId: 14,
     title: title,
     price: price,
     latitude: lat,
@@ -38,9 +36,13 @@ const HostResult = () => {
     cityId: city,
     themeId: view,
     hostDescription: hostDescription,
-    image: imgs,
   };
+
+  const images = imgs ? imgs.map(img => img[0]) : null;
+
   const goMainPage = () => {
+    const formData = new FormData();
+
     const isAllFilledForm = Object.values(context).every(
       value => value.length !== 0
     );
@@ -48,31 +50,30 @@ const HostResult = () => {
     if (!isAllFilledForm) {
       alert('빠진 곳이 없는지 확인하세요.');
     } else {
-      location('/');
+      // location('/');
       alert('호스트님, 환영합니다. 😆');
     }
     // FIXME 추후 수정
-    // fetch(`http://10.58.52.104:3000/host/19`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data',
-    //   },
-    //   body: formData,
-    // }).then(response => {
-    //   if (response.ok === true) {
-    //     return response.json();
-    //   }
-    //   throw new Error('통신실패!');
-    // });
-    const formData = new FormData();
+
     for (let key in result) {
       formData.append(key, result[key]);
     }
     // FIXME 추후 삭제
-    // let entries = formData.entries();
-    // for (const pair of entries) {
-    //   console.log(pair[0] + ', ' + pair[1]);
-    // }
+    let entries = formData.entries();
+    for (const pair of entries) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+    for (let i = 0; i < images.length; i++) {
+      formData.append('images', images[i]);
+    }
+    console.log(formData);
+    fetch(`http://10.58.52.51:3000/host`, {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
+      body: formData,
+    });
   };
   const surprise = () => {
     alert('🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪');
@@ -109,7 +110,6 @@ const HostResult = () => {
     </S.Background>
   );
 };
-
 export default HostResult;
 
 const S = {

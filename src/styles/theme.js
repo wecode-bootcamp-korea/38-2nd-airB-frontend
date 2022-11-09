@@ -25,6 +25,7 @@ const theme = {
     overlay: 100,
     sidebarModal: 200,
     searchModal: 300,
+    profileModal: 500,
     backdrop: 9,
     bottomModal: 10,
     modalOverlay: 999,
@@ -35,6 +36,7 @@ const theme = {
   },
 
   boxShadow: {
+    calendar: `5px 5px 10px rgba(0, 0, 0, 0.2)`,
     mouseOver: `0 5px 10px rgba(0, 0, 0, 0.2)`,
     dropdown: `0 4px 6px rgba(0, 0, 0, 0.18)`,
     popup: `0 4px 20px rgba(63, 65, 80, 0.3)`,

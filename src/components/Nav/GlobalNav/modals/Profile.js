@@ -66,6 +66,7 @@ const S = {
     background-color: ${theme.colors.white};
     padding: 18px 0;
     box-shadow: 1px 1px 10px ${theme.colors.transparentBlack[2]};
+    z-index: ${theme.levels.profileModal};
   `,
 
   ProfileWrapper: styled.div`

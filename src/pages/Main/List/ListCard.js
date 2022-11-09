@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './styles.css';
@@ -15,36 +15,30 @@ const ListCard = ({ data }) => {
   };
 
   return (
-    <S.Linker to={`/detail/:${data.id}`}>
+    <S.Linker to={`/detail/${data.id}`}>
       <S.WholeWrapper>
-        <S.CardWrapper>
-          <S.CardImageCarousel
-            cssMode={true}
-            navigation={true}
-            pagination={true}
-            mousewheel={true}
-            keyboard={true}
-            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-            className="mySwiper"
-          >
-            {data?.image?.map((el, index) => (
-              <S.CardSwiperSlide key={index}>
-                <S.CardImage src={el} />
-              </S.CardSwiperSlide>
-            ))}
-          </S.CardImageCarousel>
-          <S.CardTitle>{data?.title}</S.CardTitle>
-          <S.CardDescription>{data?.city}</S.CardDescription>
-          <S.CardPrice>
-            ₩{priceToString(Math.round(data?.price))}/박
-          </S.CardPrice>
-        </S.CardWrapper>
+        <S.CardImageCarousel
+          cssMode={true}
+          navigation={true}
+          pagination={true}
+          mousewheel={true}
+          keyboard={true}
+          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          className="mySwiper"
+        >
+          {data?.image?.map((el, index) => (
+            <S.CardSwiperSlide key={index}>
+              <S.CardImage src={el} />
+            </S.CardSwiperSlide>
+          ))}
+        </S.CardImageCarousel>
+        <S.CardTitle>{data?.title}</S.CardTitle>
+        <S.CardDescription>{data?.city}</S.CardDescription>
+        <S.CardPrice>₩{priceToString(Math.round(data?.price))}/박</S.CardPrice>
       </S.WholeWrapper>
     </S.Linker>
   );
 };
-
-export default ListCard;
 
 const S = {
   Linker: styled(Link)`
@@ -60,12 +54,12 @@ const S = {
     margin-bottom: 30px;
   `,
 
-  CardWrapper: styled.div`
+  CardMainWrapper: styled.div`
     display: flex;
     flex-direction: column;
-    width: 316px;
     height: 400px;
     margin: 20px;
+    z-index: -1;
   `,
 
   CardImageCarousel: styled(Swiper)`
@@ -73,15 +67,16 @@ const S = {
   `,
 
   CardSwiperSlide: styled(SwiperSlide)`
+    width: 100%;
     height: 295px;
-    background-color: #eeeeee;
+    border-radius: 15px;
+    overflow: hidden;
   `,
 
   CardImage: styled.img`
     width: 100%;
     height: 100%;
-    border-radius: 15px;
-    overflow: hidden;
+    display: block;
   `,
 
   CardTitle: styled.div`
@@ -113,3 +108,5 @@ const S = {
     fill: #727878;
   `,
 };
+
+export default ListCard;

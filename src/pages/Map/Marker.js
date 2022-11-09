@@ -20,7 +20,7 @@ const Marker = ({ position, image, id }) => {
       }}
       onClick={marker => {
         map.panTo(marker.getPosition());
-        location(`/product/${id}`);
+        location(`/detail/${id}`);
       }}
       onMouseOver={() => setIsVisible(true)}
       onMouseOut={() => setIsVisible(false)}

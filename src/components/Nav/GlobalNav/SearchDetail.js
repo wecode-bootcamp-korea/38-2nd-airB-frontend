@@ -67,15 +67,15 @@ const SearchDetail = ({
     };
 
     fetch(
-      `http://10.58.52.146:8000/product/option${convertQueryObjToString(
+      `http://10.58.52.51:3000/product/option${convertQueryObjToString(
         filtered
       )}`
     )
       .then(res => res.json())
-      .then(console.log);
+      .then(console.log(checkIn));
 
     navigate(
-      `/filter?location=${destination}&guest=${totalGuestNum}&checkin=${checkIn}&checkout=${checkOut}`
+      `?city=${destination}&guest=${totalGuestNum}&checkIn=${checkIn}&checkOut=${checkOut}`
     );
   };
 

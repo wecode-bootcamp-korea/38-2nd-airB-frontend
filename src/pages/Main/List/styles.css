@@ -8,7 +8,6 @@ body {
 }
 
 body {
-  background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
@@ -46,4 +45,27 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.swiper-button-next {
+  background: url(https://user-images.githubusercontent.com/110619143/200612032-08ed6653-4f46-4150-8fac-40546c5bf958.png)
+    no-repeat;
+  background-size: 50% auto;
+  object-fit: cover;
+  background-position: center;
+  width: 50px;
+}
+
+.swiper-button-prev {
+  background: url(https://user-images.githubusercontent.com/110619143/200610329-15eada07-f31b-458d-9835-7d4329698bb0.png)
+    no-repeat;
+  background-size: 50% auto;
+  object-fit: cover;
+  background-position: center;
+  width: 50px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
 }

@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useParams } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import CalanderComponent from '../../components/Calander/CalanderComponent';
 import 'react-datepicker/dist/react-datepicker.css';
 import theme from '../../styles/theme';
@@ -18,7 +18,7 @@ const Detail = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  // const userId = product.data[0].userId;
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -75,7 +75,9 @@ const Detail = () => {
       .then(result => {
         setProduct(result);
         setLoading(false);
-      });
+        console.log(result);
+      })
+      .catch(err => alert(err.message));
   }, [productId]);
 
   if (loading) return;
@@ -178,7 +180,7 @@ const Detail = () => {
             <S.ArticleTitleContainer>
               <S.ArticleTextContainer>
                 <S.ArticleMainText>
-                  홍길동 님이 호스팅하는 게스트용
+                  {product.data[0].hostName}님이 호스팅하는 게스트용
                   {product.data[0].buildingType} 전체
                 </S.ArticleMainText>
                 <S.ArticleSubText>
@@ -272,13 +274,13 @@ export default Detail;
 
 const S = {
   Detail: styled.div`
-    border: 4px solid ${theme.colors.blue};
+    width: 1400px;
+    padding: 0 30px;
+    margin: 0 auto;
     position: relative;
   `,
-  DetailPageContainer: styled.div`
-    margin-left: 150px;
-    margin-right: 150px;
-  `,
+
+  DetailPageContainer: styled.div``,
 
   HiddenNav: styled.div`
     width: 100%;
@@ -295,7 +297,6 @@ const S = {
 
   NavAnchor: styled.div`
     height: 100%;
-    // border: red solid 1px;
     width: 60px;
     margin-right: 20px;
     display: flex;
@@ -348,13 +349,11 @@ const S = {
   `,
 
   DetailPagePhotoZoneContainer: styled.div`
-    // border: solid 1px black;
     display: flex;
     border-radius: 15px;
     overflow: hidden;
   `,
   ThumbnailPictureContainer: styled.div`
-    // border: solid 1px red;
     height: 550px;
     width: 50%;
   `,
@@ -467,13 +466,14 @@ const S = {
     padding: 40px 0px;
   `,
   AsideContainer: styled.div`
-    border: 0.1px solid gray;
     width: 35%;
     height: 520px;
     padding: 30px 15px;
     top: 90px;
+    border-radius: 12px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     position: sticky;
-    box-shadow: 1px 1px 30px 3px grey;
   `,
 
   AsidePriceTitle: styled.div`
@@ -482,11 +482,9 @@ const S = {
     margin-bottom: 20px;
   `,
 
-  AsideCalanderContainer: styled.div`
-    // display: flex;
-  `,
+  AsideCalanderContainer: styled.div``,
+
   MapContainer: styled.div`
-    // border: 2px solid green;
     width: 100%;
   `,
 

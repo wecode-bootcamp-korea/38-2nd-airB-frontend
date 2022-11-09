@@ -1,22 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
-import ThemeFilter from './ThemeFilter';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styled from 'styled-components';
-import { AmenityFilterContext } from '../Main/AmenityFilterContext';
+import styled from 'styled-components/macro';
+import variables from '../../styles/variables';
 import FilterModal from './FilterModal';
+import ThemeFilter from './ThemeFilter';
 
 const Filter = () => {
   const [modal, setModal] = useState(false);
   const [valueFilterMain, setValueFilterMain] = useState('');
-  const [valueTheme, setValueTheme] = useState('');
-  const context = useContext(AmenityFilterContext);
-  const { setFilterValue, setFilterTheme, filterTheme, url } = context;
-
-  const reverseProps = num => {
-    setValueFilterMain(num);
-  };
+  const [_, setValueTheme] = useState('');
 
   const toggleModal = () => {
     setModal(!modal);
@@ -41,10 +35,19 @@ export default Filter;
 Modal.setAppElement('#root');
 
 const S = {
+  ThemeCenter: styled.div`
+    ${variables.flex()}
+    width: 1400px;
+    margin: 0 auto;
+  `,
+
   ThemeFilterOutline: styled.div`
     display: flex;
     justify-content: center;
-    padding: 0 80px;
+    padding: 10px 30px;
+    height: 90px;
+    width: 1400px;
+    margin: 0 auto;
   `,
 
   LocalFilterWrapper: styled.div`
