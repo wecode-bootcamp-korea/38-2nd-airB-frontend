@@ -5,7 +5,7 @@ import { FaHotel } from 'react-icons/fa';
 import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const FilterModal = ({ valueFilterMain }) => {
   const [modal, setModal] = useState(false);
@@ -349,6 +349,7 @@ const S = {
 
   ThemeFilterOutline: styled.div`
     display: flex;
+    width: 1200px;
     justify-content: center;
     padding: 0 80px;
   `,

@@ -90,9 +90,7 @@ const Sippy = styled(Swiper)`
   z-index: 0;
 `;
 
-const SliderStyle = styled(SwiperSlide)`
-  background-color: #eeeeee;
-`;
+const SliderStyle = styled(SwiperSlide)``;
 
 const OuterDiv = styled.div`
   display: flex;

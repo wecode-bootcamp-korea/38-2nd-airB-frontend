@@ -108,12 +108,12 @@ const S = {
     position: relative;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 1400px;
+    padding: 0 10px 0 10px;
     height: 80px;
     opacity: 1;
     z-index: ${theme.levels.navBar};
     background-color: ${theme.colors.white};
-    border-bottom: 1px solid ${theme.colors.transparentBlack[0]};
   `,
 
   TopNavWrapper: styled.div`

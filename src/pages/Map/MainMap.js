@@ -42,7 +42,7 @@ const MainMap = () => {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `http://10.58.52.146:8000/product/option?city=${filterlocation}&themeId=${filterTheme}&lowprice=&highprice=&bed=&bathroom=&bedroom=&APT=&GH=&HT=&guest=&checkIn=&checkOut=`
+      `http://10.58.52.159:8000/product/option?city=${filterlocation}&themeId=${filterTheme}&lowprice=&highprice=&bed=&bathroom=&bedroom=&apartmentType=&guesthouseType=&hotelType=&guest=&checkIn=&checkOut=`
     )
       .then(res => res.json())
       .then(res => {
@@ -51,17 +51,6 @@ const MainMap = () => {
         setIsLoading(false);
       });
   }, [filterTheme, filterlocation]);
-
-  //TODO 레이아웃용 삭제 예정
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch(`/data/markerData.json`)
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       setData(res);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
 
   return (
     <Map
@@ -72,7 +61,6 @@ const MainMap = () => {
       style={{
         width: '100%',
         height: '80vh',
-        marginTop: '80px',
         position: 'fixed',
       }}
       level={basicScale}
@@ -208,10 +196,10 @@ const S = {
     ${variables.flex()}
     position: fixed;
     width: 100%;
-    height: 80px;
+    height: 110px;
     background-color: white;
-    z-index: 999;
-    top: 0;
+    z-index: 10;
+    top: 80px;
   `,
 
   FilterListBox: styled.div`

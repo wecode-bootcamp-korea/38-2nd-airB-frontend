@@ -14,7 +14,6 @@ const KakaoLogin = () => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         if (typeof res.data === 'object') {
           alert('가입정보가 유효하지 않아, 회원가입 페이지로 이동합니다.');
           navigate('/');

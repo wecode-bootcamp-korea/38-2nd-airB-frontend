@@ -1,16 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import variables from '../../styles/variables';
 import { HostContext } from './User';
 
 const HostResult = () => {
   const [hostDescription, sethostDescription] = useState('');
-  const location = useNavigate();
   const context = useContext(HostContext);
-  const params = useParams();
-
-  console.log(params);
 
   const {
     where,
@@ -72,11 +67,11 @@ const HostResult = () => {
       formData.append('images', images[i]);
     }
     console.log(formData);
-    fetch(`http://10.58.52.51:3000/host/17`, {
+    fetch(`http://10.58.52.51:3000/host`, {
       method: 'POST',
-      // headers: {
-      //   'Content-Type': 'multipart/form-data  ',
-      // },
+      headers: {
+        Authorization: localStorage.getItem('accessToken'),
+      },
       body: formData,
     });
   };

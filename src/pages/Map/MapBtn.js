@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components/macro';
 import variables from '../../styles/variables';
+import { MainContext } from '../Main/MainContext';
 import MainMap from './MainMap';
 import HostStore from './Mapcontext';
 
 const MapBtn = () => {
-  const [isMapShowing, setMapShowing] = useState(false);
-
+  const context = useContext(MainContext);
+  const { isMapShowing, setMapShowing } = context;
   const toggleModal = () => {
     setMapShowing(prev => !prev);
   };
@@ -34,12 +35,12 @@ const S = {
     ${variables.flex()}
     width: 160px;
     height: 50px;
-    top: 80%;
+    top: 85%;
     left: 45%;
     background-color: #212121;
     color: white;
     border-radius: 20px;
-    z-index: 999;
+    z-index: 10;
 
     &:hover {
       transform: scale(1.1);
