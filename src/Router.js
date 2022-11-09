@@ -18,7 +18,7 @@ const Router = () => {
           <Route path="/booking/:userId" element={<Book />} />
           <Route path="/filter" element={<Filter />} />
         </Route>
-        <Route path="/host" element={<Host />} />
+        <Route path="/host/:userId" element={<Host />} />
       </Routes>
     </BrowserRouter>
   );

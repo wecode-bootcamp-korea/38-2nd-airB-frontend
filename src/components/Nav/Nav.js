@@ -15,6 +15,7 @@ const Nav = () => {
   const modalRef = useRef();
   const navigate = useNavigate();
   const isToken = localStorage.getItem('accessToken');
+  const isUserId = localStorage.getItem('userId');
 
   const handleSearchBar = () => {
     setIsOpenSearchBar(true);
@@ -58,6 +59,7 @@ const Nav = () => {
           guestNum={guestNum}
           navigate={navigate}
           isToken={isToken}
+          isUserId={isUserId}
         />
         <Search
           isOpenSearchBar={isOpenSearchBar}

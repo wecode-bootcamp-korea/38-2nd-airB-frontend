@@ -9,16 +9,18 @@ const KakaoLogin = () => {
   const code = searchParams.get('code');
 
   useEffect(() => {
-    fetch(`http://10.58.52.197:3000/user/signin?authorizationCode=${code}`, {
+    fetch(`http://10.58.52.51:3000/user/signin?authorizationCode=${code}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         if (typeof res.data === 'object') {
           alert('가입정보가 유효하지 않아, 회원가입 페이지로 이동합니다.');
           navigate('/');
         } else {
-          localStorage.setItem('accessToken', res.accessToken);
+          localStorage.setItem('accessToken', res.userInfo.accessToken);
+          localStorage.setItem('userId', res.userInfo.userId);
           navigate('/');
         }
       });

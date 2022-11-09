@@ -21,6 +21,7 @@ const GlobalNav = ({
   setIsSignInModalOpen,
   handleProfileModal,
   isToken,
+  isUserId,
 }) => {
   const ProfileComponent = {
     Guest: (
@@ -75,7 +76,7 @@ const GlobalNav = ({
         </S.SearchContainer>
         <S.UserContainer>
           <S.UserWrapper>
-            <S.SwitchUserBtn onClick={() => navigate('/host')}>
+            <S.SwitchUserBtn onClick={() => navigate(`/host/${isUserId}`)}>
               호스트 되기
             </S.SwitchUserBtn>
             <S.UserLocationIconContainers>
