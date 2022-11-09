@@ -18,9 +18,9 @@ const BookedPlace = ({ bookList }) => {
                 호스트: {bookInfo.hostName}님
               </S.ListItemHostName>
               <S.ListItemDate>{`${dateToStringForBooking(
-                bookInfo.reservation.checkIn
+                bookInfo.reservation.checkInDate
               )} - ${dateToStringForBooking(
-                bookInfo.reservation.checkOut
+                bookInfo.reservation.checkOutDate
               )}`}</S.ListItemDate>
             </S.ListItemInfoContainer>
           </S.BookListItem>

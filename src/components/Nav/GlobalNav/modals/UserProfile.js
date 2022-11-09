@@ -7,6 +7,7 @@ const UserProfile = ({
   setIsProfileModalOpen,
   navigate,
 }) => {
+  const isUserId = localStorage.getItem('userId');
   return (
     <>
       <S.ProfileModalOverlay onClick={() => setIsProfileModalOpen(false)} />
@@ -21,7 +22,9 @@ const UserProfile = ({
             }}
           >
             <S.ProfileListItem>메시지</S.ProfileListItem>
-            <S.ProfileListItem>여행</S.ProfileListItem>
+            <S.ProfileListItem onClick={() => navigate(`/booking/${isUserId}`)}>
+              여행
+            </S.ProfileListItem>
             <S.ProfileListItem onClick={() => navigate('/host')}>
               숙소 호스트 되기
             </S.ProfileListItem>
@@ -30,7 +33,11 @@ const UserProfile = ({
             <S.ProfileListItem>계정</S.ProfileListItem>
             <S.Separation />
             <S.ProfileListItem>도움말</S.ProfileListItem>
-            <S.ProfileListItem>로그아웃</S.ProfileListItem>
+            <S.ProfileListItem
+              onClick={() => localStorage.removeItem('accessToken')}
+            >
+              로그아웃
+            </S.ProfileListItem>
           </ul>
         </S.ProfileWrapper>
       </S.ProfileContainer>
@@ -59,6 +66,7 @@ const S = {
     background-color: ${theme.colors.white};
     padding: 18px 0;
     box-shadow: 1px 1px 10px ${theme.colors.transparentBlack[2]};
+    z-index: ${theme.levels.profileModal};
   `,
 
   ProfileWrapper: styled.div`

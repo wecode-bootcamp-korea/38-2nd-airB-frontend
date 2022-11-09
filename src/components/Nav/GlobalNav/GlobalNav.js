@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import theme from 'styles/theme';
 import variables from 'styles/variables';
 import { dateToString } from 'utils/format';
+import logo from '../../../assets/icons/logo.png';
 import Profile from './modals/Profile';
 import UserProfile from './modals/UserProfile';
 
@@ -21,6 +22,7 @@ const GlobalNav = ({
   setIsSignInModalOpen,
   handleProfileModal,
   isToken,
+  isUserId,
 }) => {
   const ProfileComponent = {
     Guest: (
@@ -46,7 +48,7 @@ const GlobalNav = ({
       <S.TopNavWrapper>
         <S.LogoBox>
           <Link to="/">
-            <S.LogoImg src="./images/logo.png" alt="logo" />
+            <S.LogoImg src={logo} alt="logo" />
           </Link>
         </S.LogoBox>
         <S.SearchContainer onClick={handleSearchBar}>
@@ -75,7 +77,7 @@ const GlobalNav = ({
         </S.SearchContainer>
         <S.UserContainer>
           <S.UserWrapper>
-            <S.SwitchUserBtn onClick={() => navigate('/host')}>
+            <S.SwitchUserBtn onClick={() => navigate(`/host/${isUserId}`)}>
               호스트 되기
             </S.SwitchUserBtn>
             <S.UserLocationIconContainers>
@@ -107,12 +109,12 @@ const S = {
     position: relative;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 1400px;
+    margin: 0 auto;
     height: 80px;
     opacity: 1;
     z-index: ${theme.levels.navBar};
     background-color: ${theme.colors.white};
-    border-bottom: 1px solid ${theme.colors.transparentBlack[0]};
   `,
 
   TopNavWrapper: styled.div`

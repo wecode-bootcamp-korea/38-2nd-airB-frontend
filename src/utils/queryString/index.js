@@ -10,8 +10,8 @@ export const queryObj = {
   GH: '',
   HT: '',
   guest: '',
-  checkIn: '',
-  checkOut: '',
+  checkInDate: '',
+  checkOutDate: '',
 };
 
 export const convertQueryObjToString = queryObj => {

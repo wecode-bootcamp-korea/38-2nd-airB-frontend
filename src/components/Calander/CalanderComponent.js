@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { addDays, subDays } from 'date-fns';
 import { ko } from 'date-fns/esm/locale';
 import DatePicker from 'react-datepicker';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
 import theme from '../../styles/theme';
@@ -12,11 +13,12 @@ const CalanderComponent = props => {
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [buttonBoolean, setButtonBoolean] = useState(false);
   const [reservedNight, setReservedNight] = useState(0);
-
+  const navigate = useNavigate();
   let resStartDate = startDate.toISOString().split('T');
   let resEndDate = endDate.toISOString().split('T');
   let betweenResDate = [];
-  const userId = localStorage.getItem('userId');
+  const isUserId = localStorage.getItem('userId');
+
   const {
     makeInputToPriceFormat,
     getDateRange,
@@ -62,11 +64,26 @@ const CalanderComponent = props => {
     setEndDate(date);
   };
 
+  useEffect(() => {
+    resStartDate = startDate.toISOString().split('T')[0];
+    resEndDate = endDate.toISOString().split('T')[0];
+    console.log(resStartDate);
+    console.log(resEndDate);
+    betweenResDate = [];
+    getDateRange(resStartDate, resEndDate, betweenResDate);
+    setReservedNight(betweenResDate.length - 1);
+
+    if (resStartDate > resEndDate) {
+      setReservedNight('0');
+    }
+  }, [startDate, endDate]);
+
   const sendData = () => {
-    fetch(`http://10.58.52.51:3000/reservation/${userId}`, {
+    fetch(`http://10.58.52.51:3000/reservation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('accessToken'),
       },
       body: JSON.stringify({
         productId: `${productId}`,
@@ -74,15 +91,10 @@ const CalanderComponent = props => {
         checkOut: `${resEndDate}`,
         guestCount: `${numberOfGuests}`,
       }),
-    }).then(
-      console.log(
-        '백엔드한테 보내는 값',
-        resStartDate,
-        resEndDate,
-        numberOfGuests,
-        productId
-      )
-    );
+    }).then(res => {
+      if (res.ok) {
+      }
+    });
   };
 
   const MinusGuestsNumber = () => {
@@ -112,18 +124,6 @@ const CalanderComponent = props => {
   useEffect(() => {
     checkGuestNumber();
   }, [numberOfGuests]);
-
-  useEffect(() => {
-    resStartDate = startDate.toISOString().split('T')[0];
-    resEndDate = endDate.toISOString().split('T')[0];
-    betweenResDate = [];
-    getDateRange(resStartDate, resEndDate, betweenResDate);
-    setReservedNight(betweenResDate.length - 1);
-
-    if (resStartDate > resEndDate) {
-      setReservedNight('0');
-    }
-  }, [startDate, endDate]);
 
   return (
     <S.CalanderAndPeopleNumberCheckContainer>
@@ -239,9 +239,7 @@ const S = {
     background-color: white;
   `,
 
-  CalanderAndPeopleNumberCheckContainer: styled.div`
-    // border: red solid 2px;
-  `,
+  CalanderAndPeopleNumberCheckContainer: styled.div``,
 
   CheckInAndOutContainer: styled.div`
     display: flex;
@@ -276,7 +274,6 @@ const S = {
   `,
   GuestNumberBoxTitle: styled.div``,
   SelectGuestNumberButtonZone: styled.div`
-    // border: 2px solid red;
     display: flex;
     justify-content: space-between;
     align-items: center;

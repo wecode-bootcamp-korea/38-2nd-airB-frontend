@@ -1,5 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import theme from 'styles/theme';
+import variables from 'styles/variables';
 import SignInModal from '../Modal/SignInModal';
 import GlobalNav from './GlobalNav/GlobalNav';
 import Search from './GlobalNav/Search';
@@ -15,6 +18,7 @@ const Nav = () => {
   const modalRef = useRef();
   const navigate = useNavigate();
   const isToken = localStorage.getItem('accessToken');
+  const isUserId = localStorage.getItem('userId');
 
   const handleSearchBar = () => {
     setIsOpenSearchBar(true);
@@ -43,7 +47,7 @@ const Nav = () => {
   };
 
   return (
-    <>
+    <S.NavCenter>
       <div>
         <GlobalNav
           handleSearchBar={handleSearchBar}
@@ -58,6 +62,7 @@ const Nav = () => {
           guestNum={guestNum}
           navigate={navigate}
           isToken={isToken}
+          isUserId={isUserId}
         />
         <Search
           isOpenSearchBar={isOpenSearchBar}
@@ -82,8 +87,15 @@ const Nav = () => {
           setIsSignInModalOpen={setIsSignInModalOpen}
         />
       )}
-    </>
+    </S.NavCenter>
   );
 };
 
 export default Nav;
+
+const S = {
+  NavCenter: styled.div`
+    ${variables.flex()}
+    border-bottom: 1px solid ${theme.colors.grayScale[0]};
+  `,
+};

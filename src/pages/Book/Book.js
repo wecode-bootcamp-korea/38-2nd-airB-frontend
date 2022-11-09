@@ -10,7 +10,7 @@ const Book = () => {
   const { userId } = useParams();
 
   useEffect(() => {
-    fetch(`http://10.58.52.51:3000/reservation/${userId}`)
+    fetch(`http://10.58.52.51:3000/reservation/user/${userId}`)
       .then(res => res.json())
       .then(data => {
         setBookList(data.data);
@@ -42,6 +42,8 @@ export default Book;
 
 const S = {
   BookLayout: styled.div`
+    width: 1400px;
+    margin: 0 auto;
     padding: 120px 30px 80px 30px;
   `,
 

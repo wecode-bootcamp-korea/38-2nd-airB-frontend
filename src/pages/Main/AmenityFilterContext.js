@@ -1,15 +1,18 @@
 import React, { createContext, useState } from 'react';
-
+import { TbChevronsDownLeft } from 'react-icons/tb';
+import { useLocation, useNavigate } from 'react-router-dom';
 export const AmenityFilterContext = createContext();
-// createContext()로 비어 있는 context가 만들어진다.
 
 function AmenityFilterStore(props) {
-  // props로 지정하고 싶은 상태를 만들어 준다.
-
+  const { search } = window.location;
   const [countbed, setCountbed] = useState(0);
   const [countbedroom, setCountbedroom] = useState(0);
   const [countbathroom, setCountbathroom] = useState(0);
-  const [buildingType, setBuildingType] = useState('');
+  const [buildingType, setBuildingType] = useState({
+    apartmentType: '',
+    guesthouseType: '',
+    hotelType: '',
+  });
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [filterFetcher, setFilterFetcher] = useState(null);
@@ -18,7 +21,6 @@ function AmenityFilterStore(props) {
   const [valueTheme, setValueTheme] = useState('');
   const [houseList, setHouseList] = useState([]);
   const [filterTheme, setFilterTheme] = useState('');
-  const BASE_URL = 'http://10.58.52.73:8000/product/option';
 
   const formData = {
     themeId: filterValue,
@@ -37,7 +39,7 @@ function AmenityFilterStore(props) {
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
 
-  const url = BASE_URL + '?' + queryString;
+  const url = [search, queryString].join('&');
 
   const fetchThemeFilter = () => {
     fetch(url)
@@ -72,7 +74,7 @@ function AmenityFilterStore(props) {
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
 
-  const resetUrl = BASE_URL + '?' + resetString;
+  const resetUrl = '?' + resetString;
 
   return (
     //value를 통해 전달하고 싶은 값을 넣어준다.
@@ -105,7 +107,6 @@ function AmenityFilterStore(props) {
         fetchThemeFilter,
         queryString,
         url,
-        BASE_URL,
         formData,
         handlePlaceFetcher,
         formData2,
