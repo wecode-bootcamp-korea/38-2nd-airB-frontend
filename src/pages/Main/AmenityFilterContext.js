@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
 
-export const ListContext = createContext();
+export const AmenityFilterContext = createContext();
 // createContext()로 비어 있는 context가 만들어진다.
 
-function ListStore(props) {
+function AmenityFilterStore(props) {
   // props로 지정하고 싶은 상태를 만들어 준다.
 
   const [countbed, setCountbed] = useState(0);
@@ -76,7 +76,7 @@ function ListStore(props) {
 
   return (
     //value를 통해 전달하고 싶은 값을 넣어준다.
-    <ListContext.Provider
+    <AmenityFilterContext.Provider
       value={{
         countbed,
         setCountbed,
@@ -114,7 +114,7 @@ function ListStore(props) {
       }}
     >
       {props.children}
-    </ListContext.Provider>
+    </AmenityFilterContext.Provider>
   );
 }
-export default ListStore;
+export default AmenityFilterStore;

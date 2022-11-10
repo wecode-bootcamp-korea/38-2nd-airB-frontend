@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import { ListContext } from '../AmenityFilterContext';
+import { AmenityFilterContext } from '../AmenityFilterContext';
 import ListCard from './ListCard';
 import Skeleton from './Skeleton';
 
 const ListMain = () => {
   const [loading, setLoading] = useState(true);
-  const context = useContext(ListContext);
+  const context = useContext(AmenityFilterContext);
   const { houseList, setHouseList, filterFetcher, url } = context;
 
   useEffect(() => {

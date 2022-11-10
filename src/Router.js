@@ -4,13 +4,13 @@ import Detail from './pages/Detail/Detail';
 import Filter from './pages/Filter/Filter';
 import Host from './pages/Host/Host';
 import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
-import ListStore from './pages/Main/ListText';
+import AmenityFilterStore from './pages/Main/AmenityFilterContext';
 import Main from './pages/Main/Main';
 import MainLayout from './pages/Main/MainLayout';
 
 const Router = () => {
   return (
-    <ListStore>
+    <AmenityFilterStore>
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
@@ -23,7 +23,7 @@ const Router = () => {
           <Route path="/host" element={<Host />} />
         </Routes>
       </BrowserRouter>
-    </ListStore>
+    </AmenityFilterStore>
   );
 };
 
