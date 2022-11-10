@@ -7,10 +7,10 @@ import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
-import { ListContext } from '../Main/AmenityFilterContext';
+import { AmenityFilterContext } from '../Main/AmenityFilterContext';
 
 const FilterModal = ({ valueFilterMain }) => {
-  const context = useContext(ListContext);
+  const context = useContext(AmenityFilterContext);
   const {
     countbed,
     setCountbed,

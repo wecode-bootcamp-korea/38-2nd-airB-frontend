@@ -4,13 +4,14 @@ import ThemeFilter from './ThemeFilter';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
+import { AmenityFilterContext } from '../Main/AmenityFilterContext';
 import FilterModal from './FilterModal';
 
 const Filter = () => {
   const [modal, setModal] = useState(false);
   const [valueFilterMain, setValueFilterMain] = useState('');
   const [valueTheme, setValueTheme] = useState('');
-  const context = useContext(ListContext);
+  const context = useContext(AmenityFilterContext);
   const { setFilterValue, setFilterTheme, filterTheme, url } = context;
 
   const reverseProps = num => {

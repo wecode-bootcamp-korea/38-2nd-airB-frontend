@@ -27,16 +27,15 @@ import {
 } from 'react-icons/gi';
 import { GrOverview } from 'react-icons/gr';
 import { SiAltiumdesigner } from 'react-icons/si';
-import { useSearchParams } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
 import { Navigation, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ListContext } from '../Main/ListText';
+import { AmenityFilterContext } from '../Main/AmenityFilterContext';
 
 const ThemeFilter = () => {
-  const context = useContext(ListContext);
+  const context = useContext(AmenityFilterContext);
   const {
     filterValue,
     setFilterValue,
