@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
-import ThemeFilter from './ThemeFilter';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
 import { AmenityFilterContext } from '../Main/AmenityFilterContext';
 import FilterModal from './FilterModal';
+import ThemeFilter from './ThemeFilter';
 
 const Filter = () => {
   const [modal, setModal] = useState(false);

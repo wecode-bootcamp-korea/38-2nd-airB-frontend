@@ -6,7 +6,6 @@ import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styled from 'styled-components';
 import { AmenityFilterContext } from '../Main/AmenityFilterContext';
 
 const FilterModal = ({ valueFilterMain }) => {
@@ -36,12 +35,6 @@ const FilterModal = ({ valueFilterMain }) => {
     bathroom: '',
     bedroom: '',
     type: '',
-  };
-
-  const accommodationMap = {
-    1: 'apartmentType',
-    2: 'guesthouseType',
-    3: 'hotelType',
   };
 
   const [modal, setModal] = useState(false);
@@ -83,81 +76,14 @@ const FilterModal = ({ valueFilterMain }) => {
     setMaxPrice(num.target.value);
   };
 
-  const toggleActive = prev => {
-    setButtonToggle(prev => !prev);
+  const onClickOption = option => e => {
+    setBuildingType({
+      ...buildingType,
+      [accommodationMap[option]]: buildingType[accommodationMap[option]]
+        ? ''
+        : option,
+    });
   };
-
-  const NumberButton = styled.button`
-    width: 60px;
-    height: 40px;
-    border-radius: 30px;
-    font-size: 14px;
-    margin-right: 10px;
-    background-color: ${color};
-    outline: none;
-    border: 0.5px solid #b0b0b0;
-  `;
-
-  const BASE_URL = 'http://10.58.52.94:8000/product/option';
-
-  const formData = {
-    themeId: valueFilterMain,
-    lowprice: minPrice,
-    highprice: maxPrice,
-    bed: countbed,
-    bathroom: countbathroom,
-    bedroom: countbedroom,
-    type: buildingType,
-  };
-
-  const formData2 = {
-    themeId: valueFilterMain,
-    lowprice: '',
-    highprice: '',
-    bed: '',
-    bathroom: '',
-    bedroom: '',
-    type: '',
-  };
-
-  const typecheckfunction = () => {
-    if (buildingType === 1) {
-      return 'APT : 1';
-    } else if (buildingType === 2) {
-      return 'GH : 2';
-    } else if (buildingType === 3) {
-      return 'HT : 3';
-    }
-  };
-
-  const handlePlaceFetcher = () => {
-    fetch({ url })
-      .then(res => res.json())
-      .then(res => setFilterFetcher(res));
-  };
-
-  const handleResetFetcher = () => {
-    fetch({ resetUrl })
-      .then(res => res.json())
-      .then(res => setFilterFetcher(res));
-  };
-
-  const queryString = Object.entries(formData)
-    .map(([key, value]) => `${key}=${value}`)
-    .join('&');
-
-  const resetString = Object.entries(formData2).reduce(
-    (acc, [key, value]) => `${acc}${key}=${value}&`,
-    ''
-  );
-
-  const resetUrl = BASE_URL + '?' + resetString;
-
-  const url = BASE_URL + '?' + queryString;
-
-  const numberMapping = Array(8)
-    .fill()
-    .map((_, i) => i + 1);
 
   return (
     <div>
@@ -353,6 +279,12 @@ const FilterModal = ({ valueFilterMain }) => {
 };
 
 export default FilterModal;
+
+const accommodationMap = {
+  1: 'apartmentType',
+  2: 'guesthouseType',
+  3: 'hotelType',
+};
 
 const numberMapping = Array(8)
   .fill()
