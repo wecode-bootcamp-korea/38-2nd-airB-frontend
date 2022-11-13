@@ -13,7 +13,7 @@
 
 ## 개발 기간
 
-- 2022/10/31 ~ 2022/11/1
+- 2022/10/31 ~ 2022/11/11
 
 <br/>
 
@@ -79,5 +79,5 @@
 | Hosting Page | ![host](https://user-images.githubusercontent.com/70960594/201516943-1409b97c-c95f-4be8-bab2-1d3046c19077.gif) | - | **FRONT-END** </br> `정관훈` </br> **BACK-END** </br> `정도영`|
 | Map & Filtering | ![mainmap](https://user-images.githubusercontent.com/70960594/201517296-d6b1bea2-da3a-40fd-ba17-4741d3e22acb.gif) | - Kakao Map API를 활용한 지도 구현 <br/> - 지도 위치에 따른 필터링 기능 구현 |**FRONT-END** </br>`정관훈` </br> **BACK-END** </br> `김성훈` |
 | Detail Page & Reservation Request | ![detail](https://user-images.githubusercontent.com/70960594/201517416-598cbb31-2576-4c65-890a-e9556ba5688b.gif) | - | **FRONT-END** </br> `김도영` </br> **BACK-END** </br> `정도영` |
-| Reservation inquiry Page | ![Booking](https://user-images.githubusercontent.com/70960594/201517442-43439c0a-226c-40a2-ac91-33dd5339cbbd.gif) | - | **FRONT-END**`강은지`  </br> **BACK-END** </br> `정도영` |
+| Reservation inquiry Page | ![Booking](https://user-images.githubusercontent.com/70960594/201517442-43439c0a-226c-40a2-ac91-33dd5339cbbd.gif) | - 에약이 완료된 숙박에 대한 데이터 UI 구현 | **FRONT-END**`강은지`  </br> **BACK-END** </br> `정도영` |
 
