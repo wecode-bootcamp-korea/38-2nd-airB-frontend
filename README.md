@@ -76,8 +76,8 @@
 | Social Login w/ Kakao API | ![login](https://user-images.githubusercontent.com/70960594/201516847-1f3a93fe-cd8e-44a5-b084-41c97009c3de.gif) | - 카카오 소셜 로그인 API를 활용한 회원가입, 로그인 기능 구현 | **FRONT-END** </br> `강은지` </br> **BACK-END** </br> `김희연`|
 | Filtering | ![filter](https://user-images.githubusercontent.com/70960594/201517069-339d6e3d-8947-489d-ba76-ece630af5744.gif) | - 지역, 날짜, 게스트 수에 의한 필터링 기능 구현 <br/> - Date Picker 라이브러리 활용 <br/> - query string 활용 |  **FRONT-END** </br> `강은지`, `김우진` </br> **BACK-END** </br> `김성훈` |
 | Main Page | ![mainlist](https://user-images.githubusercontent.com/70960594/201517151-fea4095b-c31e-4438-b0ff-7608c74ae520.gif) | - | **FRONT-END** </br> `김우진`  </br> **BACK-END** </br> `김성훈` |
-| Hosting Page | ![host](https://user-images.githubusercontent.com/70960594/201516943-1409b97c-c95f-4be8-bab2-1d3046c19077.gif) | - | **FRONT-END** </br> `정관훈` </br> **BACK-END** </br> `정도영`|
+| Hosting Page | ![host](https://user-images.githubusercontent.com/70960594/201516943-1409b97c-c95f-4be8-bab2-1d3046c19077.gif) |  - Context를 통한 멀티스텝폼 구현, drag&drop 으로 이미지 5개 저장 및 formdata 활용 백엔드 전송  | **FRONT-END** </br> `정관훈` </br> **BACK-END** </br> `정도영`|
 | Map & Filtering | ![mainmap](https://user-images.githubusercontent.com/70960594/201517296-d6b1bea2-da3a-40fd-ba17-4741d3e22acb.gif) | - Kakao Map API를 활용한 지도 구현 <br/> - 지도 위치에 따른 필터링 기능 구현 |**FRONT-END** </br>`정관훈` </br> **BACK-END** </br> `김성훈` |
 | Detail Page & Reservation Request | ![detail](https://user-images.githubusercontent.com/70960594/201517416-598cbb31-2576-4c65-890a-e9556ba5688b.gif) | - | **FRONT-END** </br> `김도영` </br> **BACK-END** </br> `정도영` |
-| Reservation inquiry Page | ![Booking](https://user-images.githubusercontent.com/70960594/201517442-43439c0a-226c-40a2-ac91-33dd5339cbbd.gif) | - 에약이 완료된 숙박에 대한 데이터 UI 구현 | **FRONT-END**`강은지`  </br> **BACK-END** </br> `정도영` |
+| Reservation inquiry Page | ![Booking](https://user-images.githubusercontent.com/70960594/201517442-43439c0a-226c-40a2-ac91-33dd5339cbbd.gif) | - 예약이 완료된 숙박에 대한 데이터 UI 구현 | **FRONT-END**`강은지`  </br> **BACK-END** </br> `정도영` |
 
